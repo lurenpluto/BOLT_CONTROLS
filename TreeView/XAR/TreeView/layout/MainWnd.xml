@@ -1,0 +1,180 @@
+<!--XML最好存储为UTF-8编码-->
+<xlue>
+<objtreetemplate id="MyBolt.Tree" class="ObjectTreeTemplate">
+	<attr>
+			<left>-200</left>
+			<top>0</top>
+			<width>2000</width>
+			<height>2000</height>
+	</attr>
+
+	<obj id="app.bkg" class="ImageObject">
+		<attr>
+			<left>0</left>
+			<top>0</top>
+			<width>429</width>
+			<height>720</height>
+			<!--资源相关的属性使用资源定义xml中设置的资源名-->
+			<image>app.bkg</image>
+			<drawmode>1</drawmode>
+			<alpha>255</alpha>
+		</attr>
+		<children>
+ 			<obj id="title" class="CaptionObject">
+				<attr>
+					<left>0</left>
+					<top>0</top>
+					<height>50</height>
+					<width>father.width</width>
+					<zorder>100</zorder>
+				</attr>
+				<children>
+					<obj id="title.text" class="TextObject">
+						<attr>
+							<left>father.width/2-140/2</left> 
+							<top>0</top>
+							<width>140</width>
+							<height>30</height>			
+							<text>TreeView Demo</text>
+							<textcolor>system.black</textcolor>
+							<font>default.font.bold</font>
+						</attr>
+					</obj>
+					<obj id="close.btn" class="LayoutObject">
+						<attr>
+							<left>father.width-20</left>
+							<top>0</top>
+							<width>20</width>
+							<height>20</height>
+						</attr>
+						<children>
+							<obj id="close.btn.bkg" class="ImageObject">
+								<attr>
+									<left>0</left>
+									<top>0</top>
+									<width>father.width</width>
+									<height>father.height</height>
+									<image>bitmap.sysbtn.icon.exit</image>
+								</attr>
+								<eventlist>
+									<event name="OnLButtonDown" file="MainWnd.xml.lua" func="close_btn_OnLButtonDown" />
+								</eventlist>
+							</obj>
+						</children>
+					</obj>
+				</children>
+			</obj>
+			<obj id="mainwnd.resize.left" class="ResizeObject">
+				<attr>
+					<left>0</left>
+					<top>4</top>
+					<width>4</width>
+					<height>father.height - 8</height>
+					<type>left</type>
+					<zorder>-900</zorder>
+				</attr>
+			</obj>
+			<obj id="mainwnd.resize.right" class="ResizeObject">
+					<attr>
+						<top>4</top>
+						<left>father.width-4</left>
+						<width>4</width>
+						<height>father.height - 14</height>
+						<type>right</type>
+						<zorder>-900</zorder>
+					</attr>
+			</obj>
+			<obj id="mainwnd.resize.top" class="ResizeObject">
+					<attr>
+						<left>4</left>
+						<top>0</top>
+						<width>father.width - 8</width>
+						<height>4</height>
+						<type>top</type>
+						<zorder>-900</zorder>
+					</attr>
+			</obj>
+			<obj id="mainwnd.resize.bottom" class="ResizeObject">
+					<attr>
+						<left>4</left>
+						<top>father.height-4</top>
+						<width>father.width - 14</width>
+						<height>4</height>
+						<type>bottom</type>
+						<zorder>-900</zorder>
+					</attr>
+			</obj>
+			<obj id="mainwnd.resize.topleft" class="ResizeObject">
+					<attr>
+						<width>4</width>
+						<height>4</height>
+						<type>topleft</type>
+						<zorder>-900</zorder>
+					</attr>
+			</obj>
+			<obj id="mainwnd.resize.bottomleft" class="ResizeObject">
+					<attr>
+						<top>father.height-4</top>
+						<width>4</width>
+						<height>4</height>
+						<type>bottomleft</type>
+						<zorder>-900</zorder>
+					</attr>
+			</obj>
+			<obj id="mainwnd.resize.bottomright" class="ResizeObject"> 
+					<attr>
+						<left>father.width-10</left>
+						<top>father.height-10</top>
+						<width>10</width>
+						<height>10</height>
+						<type>bottomright</type>
+						<zorder>-900</zorder>
+					</attr>
+			</obj>
+			<obj id="tree" class="TreeView" templateid="WindowsStyle" >
+				<attr>
+					<left>5</left>
+					<top>35</top>
+					<width>father.width-10</width>
+					<height>(father.height-40)</height>
+				</attr>
+				<eventlist>
+					<event name="OnInitControl" file="MainWnd.xml.lua" func="OnInitTree" />
+				</eventlist>
+			</obj>
+		</children>
+	</obj>
+</objtreetemplate>
+	
+<hostwndtemplate id="MyBolt.Wnd" class="FrameHostWnd">
+		<attr> 
+			<!-- <mainwnd>1</mainwnd> -->
+			<title>Bolt</title>
+			<layered>1</layered>
+			<left>200</left> 
+			<top>0</top>
+			<width>429</width>
+			<height>720</height>
+<!-- 			<cacheleft>0</cacheleft> 
+			<cachetop>0</cachetop>
+			<cachewidth>1000</cachewidth>
+			<cacheheight>800</cacheheight>
+			<center>1</center> -->
+			<topmost>0</topmost>
+			<visible>1</visible>
+			<enable>1</enable>
+			<!-- <active>1</active> -->
+			<maxbox>0</maxbox>
+			<minbox>0</minbox>
+			<minwidth>100</minwidth>
+			<minheight>72</minheight>
+			<maxwidth>1000</maxwidth>
+			<maxheight>1000</maxheight>
+			<appwindow>1</appwindow>
+			<fps>30</fps>
+		</attr>
+		<eventlist>
+			<event name="OnSize" file="MainWnd.xml.lua" func="OnMainWndSize"/>
+		</eventlist>
+</hostwndtemplate>
+</xlue>

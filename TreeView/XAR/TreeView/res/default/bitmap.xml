@@ -1,0 +1,10 @@
+<XLUE>
+	<resource>	
+		<bitmap id="app.bkg" path="bitmap\bkg.png"/>
+		<imagelist id="bitmap.sysbtn.image" vertical="0" splitter="1" varyblock="0" blocksize="21" image="bitmap\system_button.png"/>
+		<texture id="texture.sysbtn.normal" imagelist="bitmap.sysbtn.image" index="1"/>
+		<texture id="texture.sysbtn.hover" imagelist="bitmap.sysbtn.image" index="2"/>
+		<texture id="texture.sysbtn.down" imagelist="bitmap.sysbtn.image" index="3"/>
+		<bitmap id="bitmap.sysbtn.icon.exit" imagelist="bitmap.sysbtn.image" index="7"/>
+	</resource>
+</XLUE>

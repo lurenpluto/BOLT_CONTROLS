@@ -1,0 +1,123 @@
+<xlue>
+	<control class="ListView.ScrollBarH">
+		<attr_def>
+		</attr_def>
+		<method_def>
+			<GetScrollPos>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.h")
+				return child:GetScrollPos()
+			</GetScrollPos>
+			<SetScrollPos>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.h")
+				return child:SetScrollPos(args[2])
+			</SetScrollPos>
+			<GetScrollRange>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.h")
+				return child:GetScrollRange()
+			</GetScrollRange>
+			<SetScrollRange>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.h")
+				return child:SetScrollRange(args[2], args[3])
+			</SetScrollRange>
+		</method_def>
+		<event_def>
+			<OnScrollPosChange>
+				<param>
+				</param>
+			</OnScrollPosChange>
+		</event_def>
+		<objtemplate id="ListView.ScrollBarH">
+			<children>
+				<obj id="scrollbar.h" class="BaseUI.ScrollBar" templateid="BaseUI.HScrollBar">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<Type>h</Type>
+						<visible>1</visible>
+						<PageSize>0</PageSize>
+						<zorder>1000</zorder>
+					</attr>
+					<eventlist>
+						 <event name="OnScrollPosChange">
+							local args = {...}
+							local self = args[1]
+							local parent = self:GetFather()
+							parent:FireExtEvent("OnScrollPosChange")
+						 </event>
+					</eventlist>
+				</obj>		
+			</children>
+		</objtemplate>
+	</control>
+	<!-- Minimum ScrollBarControl, custom scroll bar control should follow this schema -->
+	<control class="ListView.ScrollBarV">
+		<attr_def>
+		</attr_def>
+		<method_def>
+			<GetScrollPos>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.v")
+				return child:GetScrollPos()
+			</GetScrollPos>
+			<SetScrollPos>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.v")
+				return child:SetScrollPos(args[2])
+			</SetScrollPos>
+			<GetScrollRange>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.v")
+				return child:GetScrollRange()
+			</GetScrollRange>
+			<SetScrollRange>
+				local args = {...}
+				local self = args[1]
+				local child = self:GetControlObject("scrollbar.v")
+				return child:SetScrollRange(args[2], args[3])
+			</SetScrollRange>
+		</method_def>
+		<event_def>
+			<OnScrollPosChange>
+				<param>
+				</param>
+			</OnScrollPosChange>
+		</event_def>
+		<objtemplate id="ListView.ScrollBarV">
+			<children>
+				<obj id="scrollbar.v" class="BaseUI.ScrollBar" templateid="BaseUI.VScrollBar">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<Type>v</Type>
+						<visible>1</visible>
+						<PageSize>0</PageSize>
+						<zorder>1000</zorder>
+					</attr>
+					<eventlist>
+						 <event name="OnScrollPosChange">
+							local args = {...}
+							local self = args[1]
+							local parent = self:GetFather()
+							parent:FireExtEvent("OnScrollPosChange")
+						 </event>
+					</eventlist>
+				</obj>		
+			</children>
+		</objtemplate>
+	</control>
+</xlue>

@@ -1,0 +1,18 @@
+<XLUE>
+	<resource>
+		<color id="color.linktext" value="#0079c5"/>
+		<color id="system.white" red="255" green="255" blue="255" alpha="255" />
+		<color id="system.black" red="0" green="0" blue="0" alpha="255" />
+		<color id="system.orange" red="44" green="151" blue="241" alpha="255" />
+		<color id="system.blue" red="0" green="0" blue="255" alpha="255" />
+        <color id="system.green" red="38" green="139" blue="35" alpha="255"/>
+		<color id="system.red" red="255" green="0" blue="0" alpha="255" />
+		<color id="system.gray" red="204" green="211" blue="214" alpha="255"/>
+		<color id="system.yellow" red="255" green="255" blue="0" alpha="255"/>
+		<color id="system.purple" red="255" green="0" blue="255" alpha="255"/>
+		<color id="system.navy" value="#000080"/>
+		<color id="system.indigo" value="#4b0082"/>
+		<color id="system.violet" value="#ee82ee"/>
+		<color id="button.disable.color" value="#878787"/>
+	</resource>
+</XLUE>
