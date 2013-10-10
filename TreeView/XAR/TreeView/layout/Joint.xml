@@ -1,0 +1,39 @@
+<xlue>
+	<control class="TreeView.Joint">
+		<attr_def>
+			<attr name="Expand" type="bool">
+				<default>true</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetIcons file="Joint.lua" func="SetIcons" />
+			<SetExpand file="Joint.lua" func="SetExpand" />
+			<IsExpand file="Joint.lua" func="IsExpand" />
+		</method_def>
+		<event_def>
+			<Triggered>
+				<param>
+					<bool name="isExapand" />
+				</param>
+			</Triggered>
+		</event_def>
+		<objtemplate id="TreeView.JointTemplate">
+					<children>
+						<obj id="image" class="ImageObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<drawmode>1</drawmode>
+							</attr>
+						</obj>
+					</children>
+			<eventlist>
+				<event name="OnLButtonDown" file="Joint.lua" func="OnLButtonDown" />
+				<event name="OnLButtonUp" file="Joint.lua" func="OnLButtonUp" />
+				<event name="OnInitControl" file="Joint.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

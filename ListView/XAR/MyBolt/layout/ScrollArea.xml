@@ -1,0 +1,120 @@
+<xlue>
+	<animation_def class="Scroll.ani">
+		<method_def>
+		<Action>
+			--这不算一个动画，只是在totalTime之后设置到目标位置
+			local arg={...}
+			local self = arg[1]
+			local attr = self:GetAttribute()
+			local from = attr.from
+			local speed = attr.speed
+			local obj = attr.obj
+			local totalTime = self:GetTotalTime()
+			local runningTime = self:GetRuningTime()
+			if runningTime >= totalTime then 
+				obj:SetScrollPosV(from+speed)
+			end
+			return 1
+		</Action>
+		</method_def>
+	</animation_def>
+	<animation_def class="DynamicScroll.ani">
+		<method_def>
+		<Action>
+			--一个模拟越来越慢的靠近目标的滚动动作
+			local arg={...}
+			local self = arg[1]
+			local attr = self:GetAttribute()
+			local from = attr.from
+			local to = attr.to
+			local obj = attr.obj
+			local totalTime = self:GetTotalTime()
+			local runningTime = self:GetRuningTime()
+			local timePercent = (totalTime-runningTime)/totalTime 
+			local distPercent = (1-timePercent*timePercent*timePercent)
+			obj:SetScrollPosV(from+(to-from)*distPercent)
+			return 1
+		</Action>
+		</method_def>
+	</animation_def>
+	<control class="ListView.ScrollArea">
+		<attr_def>
+			<attr name="PreloadDataCount" type="int" />
+		</attr_def>
+		<method_def>
+			<SetDataTable file="DataModel.lua" func="SetDataTable" />
+			<SetDataModel file="DataModel.lua" func="SetDataModel" />
+			<SetItemDataAtIndex file="DataModel.lua" func="SetItemDataAtIndex" />
+			<SetItemFactory file="ScrollArea.lua" func="SetItemFactory" />
+			<PageUp file="ScrollArea.lua" func="PageUp" />
+			<PageDown file="ScrollArea.lua" func="PageDown" />
+			<SetScrollPosV file="ScrollArea.lua" func="SetScrollPosV" />
+			<GetScrollPosV file="ScrollArea.lua" func="GetScrollPosV" />
+			<SetScrollPosH file="ScrollArea.lua" func="SetScrollPosH" />
+			<GetScrollPosH file="ScrollArea.lua" func="GetScrollPosH" />
+			<GetScrollAreaSize file="ScrollArea.lua" func="GetScrollAreaSize" />
+			<GetFirstVisibleIndex file="ScrollArea.lua" func="GetFirstVisibleIndex" />
+			<UpdateScrollAreaSize file="ScrollArea.lua" func="UpdateScrollAreaSize" />
+			<UpdateItems file="ScrollArea.lua" func="UpdateItems" />
+			<GetRowCount file="DataModel.lua" func="GetRowCount" />
+			<GetColumnCount file="DataModel.lua" func="GetColumnCount" />
+			<GetItemAtIndex file="DataModel.lua" func="GetItemAtIndex" />
+			<GetItemDataTable file="DataModel.lua" func="GetItemDataTable" />
+			<GetColumnWidthList file="ScrollArea.lua" func="GetColumnWidthList" />
+			<GetColumnNameList file="DataModel.lua" func="GetColumnNameList" />
+			<SetColumnNameList file="DataModel.lua" func="SetColumnNameList" />
+		</method_def>
+		<event_def>
+			<OnScrollPosChange>
+				<param>
+				</param>
+			</OnScrollPosChange>
+			<VerticalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</VerticalScrollPosChanged>
+			<HorizontalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</HorizontalScrollPosChanged>
+			<VisibleItemChanged>
+				<param>
+					<int name="firstVisibleItemIndex" />
+					<int name="lastVisibleItemIndex" />
+				</param>
+			</VisibleItemChanged>
+			<DataChanged>
+				<param>
+				</param>
+				<return>
+				</return>
+			</DataChanged>
+		</event_def>
+    <objtemplate>
+	<children>
+		<obj id="scrollarea.layout" class="LayoutObject">
+			<attr>
+				<left>0</left>
+				<top>0</top>
+				<width>father.width</width>
+				<height>father.height</height>
+			</attr>
+		</obj>
+	</children>
+	<eventlist>
+		<!-- 这些事件在ListView.ScrollArea 上发生时，其方法会被调用 -->
+		<event name="OnLButtonDown" file="ScrollArea.lua" func="OnLButtonDown" />
+		<event name="OnLButtonUp" file="ScrollArea.lua" func="OnLButtonUp" />
+		<event name="OnMouseMove" file="ScrollArea.lua" func="OnMouseMove" />	
+		<event name="OnMouseLeave" file="ScrollArea.lua" func="OnMouseLeave" />	
+		<event name="OnMouseWheel" file="ScrollArea.lua" func="OnMouseWheel" />	
+		<event name="OnInitControl" file="ScrollArea.lua" func="OnInitControl" />
+		<event name="OnPosChange" file="ScrollArea.lua" func="OnPosChange" />
+	</eventlist>
+	</objtemplate>	
+	</control>
+</xlue>
