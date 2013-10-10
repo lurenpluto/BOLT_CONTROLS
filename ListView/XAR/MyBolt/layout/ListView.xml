@@ -1,0 +1,100 @@
+<xlue>
+	<control class="ListView">
+		<attr_def>
+		<!-- 预加载数据量, 默认为0. 这个属性在使用lua table做数据源时不起作用 -->
+			<attr name="PreloadDataCount" type="int">
+				<default>50</default>
+			</attr>
+		<!-- 这些是关于显示的属性 -->
+		<!-- 用户可以替换自定义的ScrollBar, Header和背景纹理 -->
+			<attr name="BackgroundTexture" type="string">
+				<default></default>
+			</attr>
+			<attr name="ScrollBarClassNameV" type="string">
+				<default>ListView.ScrollBarV</default>
+			</attr>
+			<attr name="ScrollBarClassNameH" type="string">
+				<default>ListView.ScrollBarH</default>
+			</attr>
+			<attr name="ScrollBarSize" type="int">
+				<default>20</default>
+			</attr>
+			<attr name="HeaderClassName" type="string">
+				<default>ListView.Header</default>
+			</attr>
+			<attr name="HeaderHeight" type="string">
+				<default>30</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<!-- 设置接口 -->
+			<SetDataTable file="ListView.lua" func="SetDataTable" />
+			<SetDataModel file="ListView.lua" func="SetDataModel" />
+			<AppendItem file="ListView.lua" func="AppendItem" />
+			<SetItemFactory file="ListView.lua" func="SetItemFactory" />
+			<PageUp file="ListView.lua" func="PageUp" />
+			<PageDown file="ListView.lua" func="PageDown" />
+			<SetScrollBarH file="ListView.lua" func="SetScrollBarH" />
+			<SetScrollBarV file="ListView.lua" func="SetScrollBarV" />
+			<SetHeader file="ListView.lua" func="SetHeader" />
+			<SetHeaderNameList file="ListView.lua" func="SetHeaderNameList" />
+			<!-- 获取接口 -->
+			<!-- 直接返回DataModel的数据 -->
+			<GetDataCount file="ListView.lua" func="GetDataCount" />
+			<GetColumnCount file="ListView.lua" func="GetColumnCount" />
+			<!-- 返回当前界面上显示的第一个item的index -->
+			<GetFirstVisibleIndex file="ListView.lua" func="GetFirstVisibleIndex" />
+			<!-- 返回当前可见区域尺寸, 和显示完整表格需要的尺寸 -->
+			<GetViewportSize file="ListView.lua" func="GetViewportSize" />
+			<GetScrollSize file="ListView.lua" func="GetScrollSize" />
+		</method_def>
+		<event_def>
+			<VerticalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</VerticalScrollPosChanged>
+			<HorizontalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</HorizontalScrollPosChanged>
+			<VisibleItemChanged>
+				<param>
+					<int name="firstVisibleItemIndex" />
+					<int name="lastVisibleItemIndex" />
+				</param>
+			</VisibleItemChanged>
+		</event_def>
+    <objtemplate>
+	<children>
+		<obj id="listview.bkg" class="TextureObject">
+			<attr>
+				<left>0</left>
+				<top>0</top>
+				<width>father.width</width>
+				<height>father.height</height>
+				<texture></texture>
+			</attr>
+			<children>
+			<!-- 只有ListView.ScrollArea被指定Control Class, 其他的 listview.header, listview.scrollV, 在初始化时通过用户设置的Attribute “ScrollBarClassNameH” 等来实例化具体的对象-->
+				<obj id="listview.scrollarea" class="ListView.ScrollArea">
+				<attr>
+					<left>0</left>
+					<top>0</top>
+					<width>father.width</width>
+					<height>father.height</height>
+				</attr>
+				</obj>
+			</children>
+		</obj>
+	</children>
+	<eventlist>
+		<event name="OnInitControl" file="ListView.lua" func="OnInitControl" />	
+		<event name="OnPosChange" file="ListView.lua" func="OnPosChange" />
+	</eventlist>
+ 	</objtemplate>
+	</control>
+</xlue>

@@ -1,0 +1,117 @@
+<xlue>
+	<control class="ScrollPanel">
+		<attr_def>
+		</attr_def>
+		<method_def>
+			<SetHScrollBar file="ScrollPanel.lua" func="SetHScrollBar" />
+			<SetVScrollBar file="ScrollPanel.lua" func="SetVScrollBar" />
+			<SetInnerObject file="ScrollPanel.lua" func="SetInnerObject" />
+			<GetViewportSize file="ScrollPanel.lua" func="GetViewportSize" />
+		</method_def>
+		<event_def>
+			<VerticalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</VerticalScrollPosChanged>
+			<HorizontalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</HorizontalScrollPosChanged>
+			<VisibleRectChanged>
+				<param>
+					<int name="left" />
+					<int name="top" />
+					<int name="width" />
+					<int name="height" />
+				</param>
+			</VisibleRectChanged>
+		</event_def>
+		<objtemplate>
+ 			<children>
+				<obj id="scroll.area" class="LayoutObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="ScrollPanel.lua" func="OnInitScrollArea" />
+						<event name="OnPosChange" file="ScrollPanel.lua" func="OnScrollAreaPosChange" />
+					</eventlist>
+				</obj>
+				<obj id="viewport" class="RectangleObject" >
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<srcpt>0, 0</srcpt>
+						<pen>pen.dot</pen>
+						<destpt>width,height</destpt>
+						<pencolor>system.black</pencolor>
+						<brush>brush.null</brush>
+						<visible>1</visible>
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="ScrollPanel.lua" func="OnInitViewport" />
+					</eventlist>
+				</obj>
+				<obj id="scrollbar.v" class="Thunder.ScrollBar">
+					<attr>
+						<Type>1</Type>
+						<ThumbBtn_normal>texture.vsb.small.thumb.normal</ThumbBtn_normal>
+						<ThumbBtn_hover>texture.vsb.small.thumb.hover</ThumbBtn_hover>
+						<ThumbBtn_down>texture.vsb.small.thumb.down</ThumbBtn_down>
+						<SideBtnLength>0</SideBtnLength>
+						<PageSize>20</PageSize>
+						<RangeBegin>0</RangeBegin>
+						<RangeEnd>100</RangeEnd>
+						<ScrollPos>0</ScrollPos>
+						<left>father.width-23</left>
+						<top>0</top>
+						<width>23</width>
+						<height>father.height - 4</height>
+						<zorder>600</zorder>
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="ScrollPanel.lua" func="OnInitVSB" />
+						<event name="OnScrollPosChange" file="ScrollPanel.lua" func="OnVScrollPosChange" />
+					</eventlist>
+				</obj>
+				<obj id="scrollbar.h" class="Thunder.ScrollBar">
+					<attr>
+						<Type>0</Type>
+						<ThumbBtn_normal>texture.hsb.small.thumb.normal</ThumbBtn_normal>
+						<ThumbBtn_hover>texture.hsb.small.thumb.hover</ThumbBtn_hover>
+						<ThumbBtn_down>texture.hsb.small.thumb.down</ThumbBtn_down>
+						<SideBtnLength>0</SideBtnLength>
+						<PageSize>20</PageSize>
+						<RangeBegin>0</RangeBegin>
+						<RangeEnd>100</RangeEnd>
+						<ScrollPos>0</ScrollPos>
+						<Visible>false</Visible>
+						<left>0</left>
+						<top>father.height-10</top>
+						<width>father.width-12</width>
+						<height>10</height>
+						<zorder>600</zorder>
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="ScrollPanel.lua" func="OnInitHSB" />
+	 					<event name="OnScrollPosChange" file="ScrollPanel.lua" func="OnHScrollPosChange" />
+	 				</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ScrollPanel.lua" func="OnInitScrollPanel" mergetype="back" />
+				<event name="OnPosChange" file="ScrollPanel.lua" func="OnScrollPanelPosChange" mergetype="back" />
+				<event name="OnMouseWheel" file="ScrollPanel.lua" func="OnMouseWheel" />
+			</eventlist> 
+		</objtemplate>
+	</control>
+</xlue>

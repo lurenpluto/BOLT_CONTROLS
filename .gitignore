@@ -1,0 +1,12 @@
+/TreeView/*.ncb
+/TreeView/*.suo
+/ListView/*.suo
+/ListView/MyBolt/*.aps
+/TreeView/MyBolt/*.aps
+/ListView/MyBolt/*.user
+/TreeView/dataModel/*.user
+/TreeView/MyBolt/*.user
+/ListView/dataModel/*.user
+/ListView/*.ncb
+/ListView/MyBolt/Debug
+/TreeView/MyBolt/Debug

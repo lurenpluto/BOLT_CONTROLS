@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyBolt", "MyBolt\MyBolt.vcproj", "{26C8AA94-8978-4E77-A7D6-BBB360851FDC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dataModel", "dataModel\dataModel.vcproj", "{96A444FE-CC1F-425D-AF0D-F34D5D960A60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26C8AA94-8978-4E77-A7D6-BBB360851FDC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{26C8AA94-8978-4E77-A7D6-BBB360851FDC}.Debug|Win32.Build.0 = Debug|Win32
+		{26C8AA94-8978-4E77-A7D6-BBB360851FDC}.Release|Win32.ActiveCfg = Release|Win32
+		{26C8AA94-8978-4E77-A7D6-BBB360851FDC}.Release|Win32.Build.0 = Release|Win32
+		{96A444FE-CC1F-425D-AF0D-F34D5D960A60}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96A444FE-CC1F-425D-AF0D-F34D5D960A60}.Debug|Win32.Build.0 = Debug|Win32
+		{96A444FE-CC1F-425D-AF0D-F34D5D960A60}.Release|Win32.ActiveCfg = Release|Win32
+		{96A444FE-CC1F-425D-AF0D-F34D5D960A60}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

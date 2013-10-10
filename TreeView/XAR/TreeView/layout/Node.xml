@@ -1,0 +1,54 @@
+<xlue>
+	<control class="TreeView.Node">
+		<attr_def>
+			<attr name="Key" type="string" />
+		</attr_def>
+		<method_def>
+			<SetNodeData>
+				<param>
+					<int name="text" />
+				</param>
+			</SetNodeData>
+		</method_def>
+		<objtemplate id="TreeView.NodeTemplate">
+			<children>
+				<obj id="node.layout" class="RectangleObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<srcpt>0, 0</srcpt>
+						<pen>pen.dot</pen>
+						<destpt>width,height</destpt>
+						<pencolor>system.black</pencolor>
+						<brush>brush.null</brush>
+						<visible>1</visible>
+					</attr>
+					<children>
+						<obj id="text" class="TextObject">
+							<attr>
+							<left>20</left>
+							<top>0</top>
+							<width>father.width - 20</width>
+							<height>father.height</height>
+							<valign>center</valign>
+							<text>node</text>
+							<halign>center</halign>
+							<autoresize>1</autoresize>
+							</attr>
+						</obj>
+						<obj id="icon" class="ImageObject">
+							<attr>
+							<left>1</left>
+							<top>1</top>
+							<width>20</width>
+							<height>father.height-2</height>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+</xlue>

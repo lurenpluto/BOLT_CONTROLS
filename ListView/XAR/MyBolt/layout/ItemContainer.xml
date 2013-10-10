@@ -1,0 +1,30 @@
+<xlue>
+	<control class="ListView.ItemContainer">
+		<attr_def>
+			<attr name="ItemName" type="string" />
+			<!-- <attr name="CallbackTable" type="table" /> -->
+		</attr_def>
+		<method_def>
+			<SetItemData>
+			</SetItemData>
+		</method_def>
+		<objtemplate id="ItemContainer.ObjectTemplate">
+			<children>
+				<obj id="container.layout" class="RectangleObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<srcpt>0, 0</srcpt>
+						<pen>pen.solid</pen>
+						<destpt>width,height</destpt>
+						<pencolor>system.black</pencolor>
+					</attr>
+					<children>
+					</children>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+</xlue>

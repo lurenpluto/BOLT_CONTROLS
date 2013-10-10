@@ -1,0 +1,25 @@
+<XLUE>
+<resource>		
+	<!--普通的位图资源-->
+	<bitmap id="app.bkg"  path="bitmap\bkg.png" />
+	<!--纹理资源-->
+	<!--header section background -->
+	<imagelist id="imagelist.header.bkg" vertical="0" splitter="1" varyblock="1" image="bitmap\header.section.png"/>
+	<texture id="section.bkg1" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="1"/>
+	<texture id="section.bkg2" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="2"/>
+	<texture id="section.bkg3" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="3"/>
+	<texture id="section.bkg4" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="4"/>
+	<texture id="section.bkg5" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="5"/>
+	<texture id="section.bkg6" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="6"/>
+	<texture id="section.bkg7" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="7"/>
+	<texture id="section.bkg8" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="8"/>
+	<texture id="section.bkg9" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="9"/>
+	<texture id="section.bkg10" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="10"/>
+	<texture id="section.bkg11" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="11"/>
+	<texture id="section.bkg12" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="12"/>
+	<texture id="section.bkg0" type="ThreeInOneH" imagelist="imagelist.header.bkg" index="0"/>
+	<!--分割位图得到bitmap-->			
+	<imagelist id="bitmap.sysbtn.image" vertical="0" splitter="1" varyblock="0" blocksize="21" image="bitmap\system_button.png"/>
+	<bitmap id="bitmap.sysbtn.icon.exit" imagelist="bitmap.sysbtn.image" index="7"/>	
+</resource>
+</XLUE>

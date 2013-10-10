@@ -1,0 +1,151 @@
+<xlue>
+	<control class="TreeView">
+		<attr_def>
+ 			<attr name="style_name" type="string">
+				<default>WindowsStyle</default>
+			</attr>
+			<attr name="vertical_indent" type="int">
+				<default>0</default>
+			</attr>
+			<attr name="horizontal_indent" type="int">
+				<default>30</default>
+			</attr> 
+			<attr name="icon_width" type="int">
+				<default>50</default>
+			</attr>
+			<attr name="icon_height" type="int">
+				<default>20</default>
+			</attr>
+			<attr name="node_height" type="int">
+				<default>20</default>
+			</attr>
+			<attr name="node_width" type="int">
+				<default>200</default>
+			</attr>
+			<attr name="vertical_padding" type="int">
+				<default>50</default>
+			</attr>
+			<attr name="horizontal_padding" type="int">
+				<default>50</default>
+			</attr>
+			<attr name="joint_open_icon" type="string">
+				<default>../res/default/bitmap/open.png</default>
+			</attr>
+			<attr name="joint_close_icon" type="string">
+				<default>../res/default/bitmap/close.png</default>
+			</attr>
+			<attr name="joint_width" type="int">
+				<default>15</default>
+			</attr>
+			<attr name="joint_height" type="int">
+				<default>15</default>
+			</attr>
+			<attr name="joint_node_padding" type="int">
+				<default>0</default>
+			</attr>
+			<attr name="knob_size" type="int">
+				<default>5</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<RenderTreeFromDataTable file="TreeView.lua" func="RenderTreeFromDataTable" />
+			<SetStyle file="TreeView.lua" func="SetStyle" />
+			<SetItemFactory file="TreeView.lua" func="SetItemFactory" />
+			<SetTreeModel file="TreeView.lua" func="SetTreeModel" />
+			<SetHScrollBar file="TreeView.lua" func="SetHScrollBar" />
+			<SetVScrollBar file="TreeView.lua" func="SetVScrollBar" />
+			<GetTreeModel file="TreeView.lua" func="GetTreeModel" />
+			<GetViewportSize file="TreeView.lua" func="GetViewportSize" />
+		</method_def>
+		<event_def>
+			<VerticalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</VerticalScrollPosChanged>
+			<HorizontalScrollPosChanged>
+				<param>
+					<int name="oldPos"/>
+					<int name="newPos"/>
+				</param>
+			</HorizontalScrollPosChanged>
+			<VisibleRectChanged>
+				<param>
+					<int name="left" />
+					<int name="top" />
+					<int name="width" />
+					<int name="height" />
+				</param>
+			</VisibleRectChanged>
+		</event_def>
+		<objtemplate id="TreeView.Template">
+			<children>
+				<obj id="tree.scroll" class="ScrollPanel">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnBind" file="TreeView.lua" func="OnBind" />
+				<event name="OnInitControl" file="TreeView.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+	<objtemplate id="MidTopStyle">
+		<attr>
+		<!-- todo 想要在模板初始化时读到模板id, 该怎么做 -->
+			<style_name>MidTopStyle</style_name>
+			<icon_width>20</icon_width>
+			<icon_height>20</icon_height>
+			<node_height>20</node_height>
+			<node_width>20</node_width>
+			<vertical_padding>20</vertical_padding>
+			<horizontal_padding>10</horizontal_padding>
+			<joint_width>10</joint_width>
+			<joint_height>10</joint_height>
+			<joint_node_padding>3</joint_node_padding>
+		</attr>
+	</objtemplate>
+	<objtemplate id="LeftMidStyle">
+		<attr>
+		<!-- todo 想要在模板初始化时读到模板id, 该怎么做 -->
+			<style_name>LeftMidStyle</style_name>
+			<vertical_indent>0</vertical_indent>
+			<horizontal_indent>30</horizontal_indent>
+			<icon_width>20</icon_width>
+			<icon_height>20</icon_height>
+			<node_height>20</node_height>
+			<node_width>100</node_width>
+			<vertical_padding>10</vertical_padding>
+			<horizontal_padding>20</horizontal_padding>
+			<joint_width>10</joint_width>
+			<joint_height>10</joint_height>
+			<joint_node_padding>5</joint_node_padding>
+			<knob_size>8</knob_size>
+		</attr>
+	</objtemplate>
+	<objtemplate id="WindowsStyle">
+		<attr>
+		<!-- todo 想要在模板初始化时读到模板id, 该怎么做 -->
+			<style_name>WindowsStyle</style_name>
+			<vertical_indent>0</vertical_indent>
+			<horizontal_indent>30</horizontal_indent>
+			<icon_width>20</icon_width>
+			<icon_height>20</icon_height>
+			<node_height>20</node_height>
+			<node_width>100</node_width>
+			<vertical_padding>20</vertical_padding>
+			<joint_width>10</joint_width>
+			<joint_height>10</joint_height>
+		</attr>
+		<eventlist>
+			<!-- <event name="OnPostCreateInstance" file="TreeView.lua" func="OnPostCreateInstance" /> -->
+		</eventlist>
+	</objtemplate>
+</xlue>
