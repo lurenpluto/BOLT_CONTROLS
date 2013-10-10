@@ -7,3 +7,6 @@
 /TreeView/dataModel/*.user
 /TreeView/MyBolt/*.user
 /ListView/dataModel/*.user
+/ListView/*.ncb
+/ListView/MyBolt/Debug
+/TreeView/MyBolt/Debug
