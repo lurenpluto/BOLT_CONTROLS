@@ -1,1 +1,5 @@
 /TreeView/*.ncb
+/TreeView/*.suo
+/ListView/*.suo
+/ListView/MyBolt/*.aps
+/TreeView/MyBolt/*.aps
