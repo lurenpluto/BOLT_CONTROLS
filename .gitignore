@@ -3,3 +3,7 @@
 /ListView/*.suo
 /ListView/MyBolt/*.aps
 /TreeView/MyBolt/*.aps
+/ListView/MyBolt/*.user
+/TreeView/dataModel/*.user
+/TreeView/MyBolt/*.user
+/ListView/dataModel/*.user
