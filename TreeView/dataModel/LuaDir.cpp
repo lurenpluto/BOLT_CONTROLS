@@ -1,6 +1,6 @@
 #include "LuaDir.h"
 
-#include "./xl_lib/text/transcode.h"
+#include "xl_lib/text/transcode.h"
 
 void ListDirectoryContents(lua_State *L, const char *currentDir)
 {
