@@ -6,9 +6,9 @@
 
 #include "PostMessageToUIThread.h"
 
-#include "xl_lib/multithread/thread.h"
-#include "xl_lib/multithread/critical_section.h"
-#include "xl_lib/multithread/event.h"
+#include "xl_lib/win32/multithread/thread.h"
+#include "xl_lib/win32/multithread/critical_section.h"
+#include "xl_lib/win32/multithread/event.h"
 
 #include <vector>
 
