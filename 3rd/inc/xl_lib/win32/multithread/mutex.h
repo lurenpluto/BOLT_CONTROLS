@@ -32,7 +32,7 @@ class mutex
 {
 public:
     mutex();
-    mutex( bool open_existing, const wchar_t* mutex_name );
+    mutex( bool open_existing, const tchar* mutex_name );
     virtual ~mutex();
 
     mutex( const mutex& mx );
