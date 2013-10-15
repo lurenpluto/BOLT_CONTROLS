@@ -5,6 +5,8 @@ TreeView/ReadMe.txt
 
 编译运行时工程会分别在/Bolt_SDK/bin, /Bolt_SDK/include, /Bolt_SDK/lib下寻找XLUE.dll, XLUE.h, XLUE.lib等库和头文件, 这些文件在正确安装Bolt SDK后应该存在. 
 
-示例会在../3rd/inc和../3rd/lib下寻找xl_lib_static.lib及其头文件来做字符转换. 请替换成你习惯使用的方法或库.   
+示例会在../3rd/inc下寻找一些做字符处理的头文件
+
+请替换成你习惯使用的方法或库.   
 
 示例读取系统目录并以TreeView的形式显示出来. 
