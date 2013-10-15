@@ -109,7 +109,10 @@ void XmlDataModel::PrepareData(int from, int to)
 	//准备的数据在m_playlist中的索引是from-1~to-1
 	from = from <= 0 ? 1 : from;
 	to = to > (int)m_playlist.size() ? m_playlist.size() : to;
-	m_pLoader->PrepareData(from, to, m_playlist);
+	if (from <= to)
+	{
+		m_pLoader->PrepareData(from, to, m_playlist);
+	}
 }
 
 void XmlDataModel::ReleaseData(int from, int to)

@@ -17,7 +17,7 @@ const WCHAR* GetResDir()
 {
     static WCHAR wszModulePath[MAX_PATH];
     GetModuleFileNameW(NULL,wszModulePath,MAX_PATH);
-	PathAppend(wszModulePath, L"..\\..\\samples\\ListView\\XAR");
+	PathAppend(wszModulePath, L"..\\..\\XAR");
     return wszModulePath;
 }
 

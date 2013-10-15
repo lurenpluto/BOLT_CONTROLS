@@ -38,7 +38,7 @@ function initListViewWithCppModel(self)
 
 	-- Setup data model,  by default lua table is applied. 
 	-- -- 示例代码 Custom data model import by "require"
-	local dataModelUserData, dataModelCallbackTable = GetXmlDataModelObject("XmlDataModel", "Music.xml")
+	local dataModelUserData, dataModelCallbackTable = GetXmlDataModelObject("XmlDataModel", "音乐.xml")
 	self:SetDataModel(dataModelUserData, dataModelCallbackTable)
 	
 	-- -- user can: 1. specify another lua table as data model;  

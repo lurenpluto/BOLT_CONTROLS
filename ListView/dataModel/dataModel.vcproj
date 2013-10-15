@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="../../../bin"
-			IntermediateDirectory="../../../tmp/$(PROJECTNAME)/$(CONFIGURATIONNAME)"
+			OutputDirectory="../bin"
+			IntermediateDirectory="../tmp/$(PROJECTNAME)/$(CONFIGURATIONNAME)"
 			ConfigurationType="2"
 			UseOfATL="2"
 			CharacterSet="1"
@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../../include;../include;../../3rd/inc"
+				AdditionalIncludeDirectories="../include;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DATAMODEL_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,9 +62,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="XLLuaRuntime.lib libexpat.lib XLFSIO.lib XLUE.lib XLGraphic.lib"
+				AdditionalDependencies="XLLuaRuntime.lib XLFSIO.lib XLUE.lib XLGraphic.lib libexpat.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../../lib;"
+				AdditionalLibraryDirectories="../lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
