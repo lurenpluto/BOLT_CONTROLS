@@ -2,7 +2,8 @@
 #include "PostMessageToUIThread.h"
 #include "XmlParser.h"
 
-#include "xl_lib/text/transcode.h"
+#include "xl_lib/text/Win32Transcode.h"
+#include <windows.h>
 
 struct XmlDataLoader::StrRange
 {
@@ -30,12 +31,12 @@ XmlDataLoader::XmlDataLoader()
 , m_pCallbackToDataModelOnSingleDataReady(NULL)
 {
 	m_pParser = new XmlParser();
+	InitializeCriticalSection(&m_cs);
 }
 
 XmlDataLoader::~XmlDataLoader()
 {
-	m_event.set_event();
-	stop();
+	DemoThread::Stop();
 	if (m_pParser)
 	{
 		delete m_pParser;
@@ -127,14 +128,8 @@ void XmlDataLoader::SetDataBatchReadyListener(PFNMAINTHREADCALLBACK pfnCallback,
 	m_pCallbackToDataModelOnDataBatchReady->pCaller = ptrCaller;
 }
 
-xl::uint32  XmlDataLoader::thread_proc()
+BOOL XmlDataLoader::Run()
 {
-	while(m_event.wait_event())
-	{
-		if (this->is_stop_event_set())
-		{
-			break;
-		}
 		StrRange r;	
 		r.type = StrRange::Invalid;
 		GetRange(r);
@@ -179,42 +174,42 @@ xl::uint32  XmlDataLoader::thread_proc()
 		{
 			delete r.pPlaylist;
 		}
-	}
 	return 1;
 }
 
 bool XmlDataLoader::AppendRange(XmlDataLoader::StrRange r)
 {
-	m_cs.lock();
+	EnterCriticalSection(&m_cs);
 	m_dataRangesWaitingForExecute.push_back(r);
 	if (m_dataRangesWaitingForExecute.size() == 1)
 	{
-		m_event.set_event();
+		DemoThread::Start();
 	}
-	m_cs.unlock();
+	LeaveCriticalSection(&m_cs);
 	return true;
 }
 
 bool XmlDataLoader::GetRange(XmlDataLoader::StrRange &r)
 {
-	m_cs.lock();
+	EnterCriticalSection(&m_cs);
 	if (!m_dataRangesWaitingForExecute.empty())
 	{
 		r = m_dataRangesWaitingForExecute.front();
 		m_dataRangesWaitingForExecute.erase(m_dataRangesWaitingForExecute.begin());
-		if (m_dataRangesWaitingForExecute.empty())
-		{
-			m_event.reset_event();
-		}
 	}
-	m_cs.unlock();
+	if (m_dataRangesWaitingForExecute.size() == 0)
+	{
+		DemoThread::Suspend();
+	}
+	LeaveCriticalSection(&m_cs);
 	return true;
 }
 
 XL_BITMAP_HANDLE XmlDataLoader::LoadImage(const char* lpFile)
 {
+	std::string strFile(lpFile);
 	std::wstring wlpFile;
-	xl::text::transcode::UTF8_to_Unicode(lpFile, strlen(lpFile), wlpFile);
+	Win32Transcode::UTF8_to_Unicode(lpFile, strlen(lpFile), wlpFile);
 	const wchar_t* lpExt = ::PathFindExtension(wlpFile.c_str());
 	if (lpExt && ::lstrcmpi(lpExt, L".png") == 0)
 	{
@@ -223,4 +218,58 @@ XL_BITMAP_HANDLE XmlDataLoader::LoadImage(const char* lpFile)
 		return hBitmap;
 	}
 	return NULL;
+}
+DemoThread::DemoThread()
+{
+    m_hEventSuspend = CreateEvent(0,TRUE,FALSE,NULL);
+    m_status = TRUE;
+
+    m_hThread = (HANDLE)_beginthreadex(NULL,0,DemoThread::StartAddress,this,0,&m_thrdAddr);
+}
+
+DemoThread::~DemoThread()
+{
+    CloseHandle(m_hEventSuspend);
+    CloseHandle(m_hThread );
+}
+
+BOOL DemoThread::Start()
+{
+    return SetEvent(m_hEventSuspend);
+}
+
+BOOL DemoThread::Suspend()
+{
+    return ResetEvent(m_hEventSuspend);
+}
+
+BOOL DemoThread::Run()
+{
+    return TRUE;
+}
+
+BOOL DemoThread::Stop()
+{
+    m_status = FALSE;
+    Start();
+    WaitForSingleObject(m_hThread,INFINITE);
+
+    return TRUE;
+}
+
+unsigned __stdcall DemoThread::StartAddress(void * obj)
+{
+    DemoThread* pthread = static_cast<DemoThread*>(obj);
+
+    while(pthread->m_status)
+    {
+        WaitForSingleObject(pthread->m_hEventSuspend,INFINITE);
+        if (!pthread->Run())
+		{
+            break;
+		}
+    }
+    _endthreadex(0);
+
+    return 0;
 }

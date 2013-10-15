@@ -62,10 +62,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="XLLuaRuntime.lib XLFSIO.lib XLUE.lib XLGraphic.lib xl_lib_static.lib"
+				AdditionalDependencies="XLLuaRuntime.lib XLFSIO.lib XLUE.lib XLGraphic.lib"
 				OutputFile="$(OutDir)\DirModel.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../../lib;../../3rd/lib"
+				AdditionalLibraryDirectories="../../../lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -190,7 +190,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\xl_include\datamodel.h"
+				RelativePath=".\datamodel.h"
 				>
 			</File>
 			<File

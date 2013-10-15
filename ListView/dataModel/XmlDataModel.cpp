@@ -13,7 +13,7 @@ XmlDataModel::XmlDataModel(int argc, const char *argv[])
 		InitUIThread();
 		m_pLoader = new XmlDataLoader();
 		m_pLoader->LoadPlaylist(m_playlist, argv[0]);
-		m_pLoader->start();
+		m_pLoader->Start();
 	}
 }
 

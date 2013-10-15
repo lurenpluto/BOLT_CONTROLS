@@ -1,7 +1,7 @@
 #include "XmlParser.h"
 #include "PostMessageToUIThread.h"
 
-#include "xl_lib/text/transcode.h"
+#include "xl_lib/text/Win32Transcode.h"
 
 XmlParser::XmlParser()
 {
@@ -15,7 +15,7 @@ XmlParser::~XmlParser()
 bool XmlParser::LoadPlaylist(std::vector<StrSongInfo*> & playlist, const char* fileName)
 {
 	std::wstring wplaylistName;
-	xl::text::transcode::UTF8_to_Unicode(fileName, strlen(fileName), wplaylistName);
+	Win32Transcode::UTF8_to_Unicode(fileName, strlen(fileName), wplaylistName);
 
 	XLFS_FILE_HANDLE hFile = NULL;
 	m_playlist = &playlist;
