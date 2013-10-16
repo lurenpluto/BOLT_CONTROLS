@@ -18,6 +18,8 @@ set sdk_inc_url=%sdk_vs_url%/include
 
 set sdk_inc=%local_dir%\include
 
+mkdir %sdk_inc%
+
 %svn_tool% export --force -r %sdk_ver% %sdk_inc_url% %sdk_inc%
 
 set sdk_lib_url=%sdk_vs_url%/dev/%sdk_dev_ver%/lib
@@ -45,11 +47,5 @@ set sdk_dll_url=%sdk_vs_url%/bin
 %svn_tool% export --depth infinity --force -r %sdk_ver% %sdk_dll_url% %sdk_bin%
 
 set sdk_bin_url=%sdk_vs_url%/dev/%sdk_dev_ver%/bin
-
-set sdk_dll=%local_dir%\bin
-
-%svn_tool% export --force -r %sdk_ver% %sdk_bin_url% %sdk_dll%
-
-set sdk_dll_url=%sdk_vs_url%/bin
 
 pause
