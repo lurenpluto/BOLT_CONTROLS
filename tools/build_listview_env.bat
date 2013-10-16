@@ -18,17 +18,12 @@ set sdk_inc_url=%sdk_vs_url%/include
 
 set sdk_inc=%local_dir%\include
 
-<<<<<<< HEAD
 %svn_tool% export --force -r %sdk_ver% %sdk_inc_url% %sdk_inc%
-=======
-:%svn_tool% export --force -r %sdk_ver% %sdk_inc_url% %sdk_inc%
->>>>>>> 44924c71778d2454834d6b9c2b84b03409720752
 
 set sdk_lib_url=%sdk_vs_url%/dev/%sdk_dev_ver%/lib
 
 set sdk_lib=%local_dir%\lib
 
-<<<<<<< HEAD
 mkdir %sdk_lib%
 
 %svn_tool% export --force -r %sdk_ver% %sdk_lib_url% %sdk_lib%
@@ -48,12 +43,6 @@ mkdir %sdk_bin%
 set sdk_dll_url=%sdk_vs_url%/bin
 
 %svn_tool% export --depth infinity --force -r %sdk_ver% %sdk_dll_url% %sdk_bin%
-=======
-:%svn_tool% export --force -r %sdk_ver% %sdk_lib_url% %sdk_lib%
-
-set sdk_xml_lib_url=%sdk_vs_url%/dev/pr/lib/libexpat.lib
-
-:%svn_tool% export --force -r %sdk_ver% %sdk_xml_lib_url% %sdk_lib%
 
 set sdk_bin_url=%sdk_vs_url%/dev/%sdk_dev_ver%/bin
 
@@ -62,8 +51,5 @@ set sdk_dll=%local_dir%\bin
 %svn_tool% export --force -r %sdk_ver% %sdk_bin_url% %sdk_dll%
 
 set sdk_dll_url=%sdk_vs_url%/bin
-
-:%svn_tool% export --depth infinity --force -r %sdk_ver% %sdk_dll_url% %sdk_dll%
->>>>>>> 44924c71778d2454834d6b9c2b84b03409720752
 
 pause
