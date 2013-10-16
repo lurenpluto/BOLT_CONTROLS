@@ -6,10 +6,6 @@
 
 #include "PostMessageToUIThread.h"
 
-#include "xl_lib/win32/multithread/thread.h"
-#include "xl_lib/win32/multithread/critical_section.h"
-#include "xl_lib/win32/multithread/event.h"
-
 #include <vector>
 
 class XmlParser;
@@ -39,7 +35,28 @@ struct PostSingleDataMessageToUIThreadUserData
 	void *pCaller;
 };
 
-class XmlDataLoader : public xl::win32::multithread::thread
+class DemoThread
+{
+public:
+    DemoThread();
+    virtual ~DemoThread();
+    
+    BOOL Start(); 
+    BOOL Suspend();
+    virtual BOOL Run();
+    BOOL Stop();
+
+protected:
+    static unsigned __stdcall StartAddress( void * obj);
+
+public:
+    HANDLE m_hThread; 
+    HANDLE m_hEventSuspend;
+    BOOL m_status;
+    unsigned  m_thrdAddr;
+};
+
+class XmlDataLoader : public DemoThread
 {
 public:
 	XmlDataLoader();
@@ -54,7 +71,7 @@ public:
 	void SetSingleDataReadyListener(PFNMAINTHREADCALLBACK pfnCallback, void* ptrCaller);
 
 protected:
-	virtual xl::uint32  thread_proc();
+	virtual BOOL Run();
 
 private:
 	struct StrRange;
@@ -62,8 +79,8 @@ private:
 	bool GetRange(StrRange& r);
 
 private:
-	xl::win32::multithread::critical_section m_cs;
-	xl::win32::multithread::event m_event;
+	CRITICAL_SECTION m_cs;
+	//xl::win32::multithread::critical_section m_cs;
 	XmlParser *m_pParser;
 	std::vector<StrRange> m_dataRangesWaitingForExecute;
 	CallbackToDataModelOnDataReady *m_pCallbackToDataModelOnDataBatchReady;

@@ -7,8 +7,6 @@ function GetXmlDataModelObject(dataModelClassName, playlistFileName)
 		userdata ={}
 		userdata.class = xmlClass
 		userdata.className = dataModelClassName
-		local delete = xmlClassFactory:CreateInstance(dataModelClassName, playlistFileName)
-		delete = nil
 		callbackTable = {}
 		callbackTable.GetCount = 
 			function(userdata)
