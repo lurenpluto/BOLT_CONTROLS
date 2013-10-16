@@ -1,11 +1,11 @@
 #include "LuaDir.h"
 
-#include "xl_lib/text/transcode.h"
+#include "xl_lib/text/Win32Transcode.h"
 
 void ListDirectoryContents(lua_State *L, const char *currentDir)
 {
 	std::wstring wsConvert;
-	xl::text::transcode::UTF8_to_Unicode(currentDir, strlen(currentDir), wsConvert);
+	Win32Transcode::UTF8_to_Unicode(currentDir, strlen(currentDir), wsConvert);
 	const wchar_t *wCurrentDir =wsConvert.c_str();
 
 	if (wcscmp(wCurrentDir, L"") == 0)
@@ -23,7 +23,7 @@ void ListDirectoryContents(lua_State *L, const char *currentDir)
 		{
 			int len = wcslen(szDrive);
 			std::string sDriveConvert;
-			xl::text::transcode::Unicode_to_UTF8(szDrive, wcslen(szDrive), sDriveConvert);
+			Win32Transcode::Unicode_to_UTF8(szDrive, wcslen(szDrive), sDriveConvert);
 			const char* volume = sDriveConvert.c_str();
 			UINT uDriveType = GetDriveType(szDrive);
 
@@ -77,7 +77,7 @@ void ListDirectoryContents(lua_State *L, const char *currentDir)
 				lua_settable(L, -3);
 
 				std::string subDirString;
-				xl::text::transcode::Unicode_to_UTF8(fdFile.cFileName, MAX_PATH, subDirString);
+				Win32Transcode::Unicode_to_UTF8(fdFile.cFileName, MAX_PATH, subDirString);
 
 				lua_pushnumber(L, 2);
 				lua_pushstring(L, subDirString.c_str());

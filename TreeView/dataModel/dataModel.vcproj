@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="../../../bin"
-			IntermediateDirectory="../../../tmp/$(PROJECTNAME)/$(CONFIGURATIONNAME)"
+			OutputDirectory="../bin"
+			IntermediateDirectory="../tmp/$(PROJECTNAME)/$(CONFIGURATIONNAME)"
 			ConfigurationType="2"
 			UseOfATL="2"
 			CharacterSet="1"
@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../../include;../../3rd/inc"
+				AdditionalIncludeDirectories="../include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DATAMODEL_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,10 +62,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="XLLuaRuntime.lib XLFSIO.lib XLUE.lib XLGraphic.lib xl_lib_static.lib"
+				AdditionalDependencies="XLLuaRuntime.lib XLFSIO.lib XLUE.lib XLGraphic.lib"
 				OutputFile="$(OutDir)\DirModel.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../../lib;../../3rd/lib"
+				AdditionalLibraryDirectories="../lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -190,7 +190,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\xl_include\datamodel.h"
+				RelativePath=".\datamodel.h"
 				>
 			</File>
 			<File
